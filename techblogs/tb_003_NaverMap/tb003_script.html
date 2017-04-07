@@ -83,6 +83,11 @@
 		 		<a href="single-post.html"><h3 class="ctitle">Naver Map 라이브러리 사용기</h3></a>
 		 		<p><csmall>Posted: April 5, 2017.</csmall> | <csmall2>By: 김기유 (kiyouapp@gmail.com)</csmall2></p>
                 <p>다룰 내용: 네이버맵 라이브러리 받아오는 것과 API 키 발급받아 인증하기, 위도 경도와 스케일 조절하기, POIData 추가 및 화면에 띄우기 사라지게 하기, 맵뷰에서 Search bar 띄우고 맴 데이터와 연동하기, 키보드 띄우기와 사라지게 하기 맵뷰 반응과 연동하기, Stepper 표시하여 맵뷰와 연동하기, 다른 뷰에서 값을 받아와서 특정 POIData만 띄우고 focus하기.</p>
+                <p>이 포스트에서는 iOS용 네이버 지도 라이브러리를 활용하는 방법에 대해 다루어보고자 합니다.</p>
+                <h4>개발을 위한 준비사항</h4>
+                <p>iOS 네이버 지도API 개발을 위한 준비사항은 네이버에서 제공하는 iOS 지도 개발가이드(https://developers.naver.com/docs/map/ios)에 자세하게 나와있습니다. SDK를 다운받아 프로젝트에 Framework를 추가하고, 개발자 페이지에서 오픈API Key를 발급받아 프로젝트 코드 안에 입력하면 개발 준비가 완료됩니다. 개발을 시작하기에 앞서 개발가이드에 설명되어 있는 네이버 지도 라이브러리의 모든 클래스를 쭉 읽어보시는 것을 추천합니다. 네이버 지도 라이브러리가 다룰 수 있는 모든 정보가 명시되어 있습니다. 튜토리얼(https://developers.naver.com/docs/map/tutorial/)은 네이버 지도의 기본적인 기능들에 대한 샘플 코드를 실행 이미지와 함께 제공하고 있어 라이브러리를 이해하는 데에 도움이 됩니다.</p>
+                <h4>예제 프로젝트에 대한 설명</h4>
+                <p>예제 프로젝트는 '대학교 캠퍼스맵'입니다. 대학 건물들이 Data로 존재하고 건물의 좌표값을 통해 지도뷰 위에 마커를 띄울 수 있습니다. 마커를 누르면 건물에 대한 팝업창을 띄웁니다. 지도뷰 타이틀에는 검색창이 있어 건물명을 검색하는 것이 가능합니다.ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</p>
 		 		<p><b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 		 		<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 		 		<p>Contrary to popular belief, <b>Lorem Ipsum is not simply random text</b>. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at <a href="#">Hampden-Sydney College</a> in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
