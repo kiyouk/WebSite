@@ -82,17 +82,38 @@
 		 		<p><img class="img-responsive" src="tb003_media/pic01.jpg"></p>
 		 		<a href="single-post.html"><h3 class="ctitle">Naver Map 라이브러리 사용기</h3></a>
 		 		<p><csmall>Posted: April 5, 2017.</csmall> | <csmall2>By: 김기유 (kiyouapp@gmail.com)</csmall2></p>
+                
                 <p>다룰 내용: 네이버맵 라이브러리 받아오는 것과 API 키 발급받아 인증하기, 위도 경도와 스케일 조절하기, POIData 추가 및 화면에 띄우기 사라지게 하기, 맵뷰에서 Search bar 띄우고 맴 데이터와 연동하기, 키보드 띄우기와 사라지게 하기 맵뷰 반응과 연동하기, Stepper 표시하여 맵뷰와 연동하기, 다른 뷰에서 값을 받아와서 특정 POIData만 띄우고 focus하기.</p>
+                
                 <p>이 포스트에서는 iOS용 네이버 지도 라이브러리를 활용하는 방법에 대해 다루어보고자 합니다.</p>
+
                 <h4>개발을 위한 준비사항</h4>
-                <p>iOS 네이버 지도API 개발을 위한 준비사항은 네이버에서 제공하는 iOS 지도 개발가이드(https://developers.naver.com/docs/map/ios)에 자세하게 나와있습니다. SDK를 다운받아 프로젝트에 Framework를 추가하고, 개발자 페이지에서 오픈API Key를 발급받아 프로젝트 코드 안에 입력하면 개발 준비가 완료됩니다. 개발을 시작하기에 앞서 개발가이드에 설명되어 있는 네이버 지도 라이브러리의 모든 클래스를 쭉 읽어보시는 것을 추천합니다. 네이버 지도 라이브러리가 다룰 수 있는 모든 정보가 명시되어 있습니다. 튜토리얼(https://developers.naver.com/docs/map/tutorial/)은 네이버 지도의 기본적인 기능들에 대한 샘플 코드를 실행 이미지와 함께 제공하고 있어 라이브러리를 이해하는 데에 도움이 됩니다.</p>
+                <p>iOS 네이버 지도API 개발을 위한 준비사항은 네이버에서 제공하는 <b>OS 지도 개발가이드</b>(https://developers.naver.com/docs/map/ios)에 자세하게 나와있습니다. SDK를 다운받아 프로젝트에 Framework를 추가하고, 개발자 페이지에서 오픈API Key를 발급받아 프로젝트 코드 안에 입력하면 개발 준비가 완료됩니다. 개발을 시작하기에 앞서 개발가이드에 설명되어 있는 네이버 지도 라이브러리의 모든 클래스를 쭉 읽어보시는 것을 추천합니다. 네이버 지도 라이브러리가 다룰 수 있는 모든 정보가 명시되어 있습니다. <b>튜토리얼</b>(https://developers.naver.com/docs/map/tutorial/)은 네이버 지도의 기본적인 기능들에 대한 샘플 코드를 실행 이미지와 함께 제공하고 있어 라이브러리를 이해하는 데에 도움이 됩니다.</p>
+                
                 <h4>예제 프로젝트에 대한 설명</h4>
-                <p>예제 프로젝트는 '대학교 캠퍼스맵'입니다. 대학 건물들이 Data로 존재하고 건물의 좌표값을 통해 지도뷰 위에 마커를 띄울 수 있습니다. 마커를 누르면 건물에 대한 팝업창을 띄웁니다. 지도뷰 타이틀에는 검색창이 있어 건물명을 검색하는 것이 가능합니다.ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</p>
-		 		<p><b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-		 		<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-		 		<p>Contrary to popular belief, <b>Lorem Ipsum is not simply random text</b>. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at <a href="#">Hampden-Sydney College</a> in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-		 		<p>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-		 		<h4>Why do we use it?</h4>
+                <p>예제 프로젝트는 <b>대학교 캠퍼스맵</b>입니다. 대학 건물들이 Data로 존재하고 건물의 좌표값을 통해 지도뷰 위에 마커를 띄울 수 있습니다. 마커를 누르면 건물에 대한 팝업창을 띄웁니다. 지도뷰 내비게이션 바에는 검색창이 있어 건물명을 검색하는 것이 가능합니다. 검색값에 따라 지도 위에 표현되는 건물 데이터가 변화합니다. 예제의 지도 뷰는 네이버에서 기본 제공되는 뷰 컨트롤러 중에서 <b>LocationMapViewController</b>를 기반으로 진행했습니다. 해당 컨트롤러는 뷰 좌측 상단에 위치 버튼이 추가되며 버튼을 누르면 사용자의 현재 위치를 나타냅니다.</p>
+		 		
+                <h4>poiData 배열을 입력받아 지도 상에 마커 나타내기</h4>
+                <script src="https://gist.github.com/kiyouk/a7f3722e87c41cd5e3c6d7d90cfba44c.js"></script>
+                <p>우선은 DataCenter를 만들고 지도에 나타낼 위치들을 Place 클래스로 정의하여 Place의 배열로 만들어 놓습니다. Place 클래스에는 위치의 이름, 위도, 경도 등의 변수가 담겨있습니다. 이 함수는 DataCenter의 Place 배열을 가져와 모든 개체를 poiData에 추가한 후 모든 개체를 지도 상에 나타내거나 특정 개체에 포커싱하고 지도 상에 나타내게 합니다.</p>
+                <script src="https://gist.github.com/kiyouk/3e07ab8356053423bb7f39d2b7f59221.js"></script>
+                <p>특정 개체를 선택하였거나 특정 개체의 값만을 받아와 지도 상에 마커를 나타낼 상황에는 위와 같이 할 수 있습니다. 예제의 상황에서는 위치의 이름값을 입력받습니다. 그 값을 이용해 DataCenter의 Place 배열 중에 이름이 일치하는 개체를 찾아 그 개체 하나만을 poiData에 추가하여 이것의 마커만을 지도 상에 나타냅니다. 지도 뷰는 자동적으로 이 마커에 포커싱됩니다.</p>
+                <script src="https://gist.github.com/kiyouk/2f6de5b59a8bad63a01cd6d9fff3d472.js"></script>
+                <p>직접 만든 함수 loadallMarkers와 showoneMarker는 위와 같이 viewDidAppear 함수 내에서 쓸 수 있습니다. viewDidAppear 함수 내의 if...else 문을 보겠습니다. 기본적으로 이 뷰의 내비게이션 타이틀은 'Map'으로 설정된 상태이기 때문에 일반적으로 이 뷰가 실행되면 loadallMarkers 함수에 의해 모든 poiData의 마커를 나타내게 됩니다. 다른 뷰에서 가져온 특정 값을 이 뷰의 타이틀로 지정하는 경우에는 showoneMarker 함수에 의해 특정 개체만을 poiData로 하여 해당 마커만을 나타내게 됩니다. viewDidDisappear 내에는 기본제공되는 clearOverlays 함수를 넣어주어 뷰가 닫힐 때마다 poiDataOverlays를 정리해주는 것이 좋습니다.</p>
+
+                <h4>내비게이션 바에 Search Bar 나타내기</h4>
+                <script src="https://gist.github.com/kiyouk/482ee911eb1b06ce4693e81fa52b4fc9.js"></script>
+                <p>위와 같이 해당 클래스에 UISearchBarDelegate를 지정해주고 createSearchBar 함수를 이용해 내비게이션 바에 SearchBar를 나타낼 수 있습니다. 그럼 이 SearchBar가 기능을 할 수 있도록 부가적인 함수들을 만들어 봅니다.</p>
+		 		
+                <h4>SearchBar에 검색 기능 넣어주기</h4> 
+                <script src="https://gist.github.com/kiyouk/8a472a4b2ec07d76edde7251393620b8.js"></script>
+                <p>설명 추가</p>
+
+                <h4>SearchBar, 키보드, 지도 연동 기능 넣어주기</h4>
+                <script src="https://gist.github.com/kiyouk/8acaa9c432f660f4622b472bec20d138.js"></script>
+                <p>설명 추가</p>
+
+                <h4>Why do we use it?</h4>
 		 		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
 		 		<blockquote>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</blockquote>
 		 		<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
